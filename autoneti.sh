@@ -25,7 +25,7 @@ then
 		magic_value=$(curl --silent `curl --silent google.com | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u` | grep magic | cut -d '=' -f4 | cut -d '"' -f 2)
 		username=''
 		password=''
-		login_request=$(curl --silent -X POST https://gateway.iitk.ac.in:1003/ -d "magic=$magic_value&username=$username&password=$password" | cut -d '=' -f2 | cut -d '"' -f2)
+		login_request=$(curl --silent -X POST https://gateway.iitk.ac.in:1003/ -d "magic=$magic_value&username=$username&password=$password" | cut -d '=' -f3 | cut -d '"' -f 2)
 	
 		echo $login_request
 		while true; do curl --silent --output /dev/null $login_request ; sleep 500s; done
@@ -33,4 +33,3 @@ then
 else
 	echo "Pass either c to connect or d to disconnect."
 fi
-
