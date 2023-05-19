@@ -1,6 +1,6 @@
 
-$username=""
-$password=""
+$username=[uri]::EscapeDataString('')
+$password=[uri]::EscapeDataString('')
 
 $keepalive="https://gateway.iitk.ac.in:1003/keepalive?080902080a3d09c7"
 $logout="https://gateway.iitk.ac.in:1003/logout?0a060c0e0b310bc5"
