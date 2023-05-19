@@ -25,7 +25,7 @@ then
 		magic_value=$(curl --silent `curl --silent google.com | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" | sort -u` | grep magic | cut -d '=' -f4 | cut -d '"' -f 2)
 		username=''
 		password=''
-		login_request=$(curl --silent -X POST https://gateway.iitk.ac.in:1003/ -d "magic=$magic_value&username=$username&password=$password" | cut -d '=' -f3 | cut -d '"' -f 2)
+		login_request=$(curl --silent -X POST https://gateway.iitk.ac.in:1003/ --data-urlencode "magic=$magic_value" --data-urlencode "username=$username" --data-urlencode "password=$password" | cut -d '=' -f3 | cut -d '"' -f 2)
 	
 		echo $login_request
 		while true; do curl --silent --output /dev/null $login_request ; sleep 500s; done
